@@ -1,12 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mc_core_constants/mc_core_constants.dart';
 import 'package:mini_campus_core/mini_campus_core.dart';
-import 'package:mini_campus_core_libs/mini_campus_core_libs.dart';
 
 import '../data/models/lost_found_filter.dart';
 import '../data/models/lost_found_item.dart';
 
-final lostFoundDataProvider = Provider((_) => DataService());
+final lostFoundDataProvider = Provider((_) => DataService(_.read));
 
 final lfFilterProvider =
     AutoDisposeFutureProviderFamily<List<LostFoundItem>, LostFoundFilter>(
@@ -18,8 +16,15 @@ final lfFilterProvider =
 
 /// deta base, lost-found repository
 class DataService {
-  static final DetaRepository _detaRepository =
-      DetaRepository(baseName: DetaBases.lostFound, detaBaseUrl: detaBaseUrl);
+  late final DetaRepository _detaRepository;
+
+  final Reader _read;
+
+  DataService(this._read)
+      : _detaRepository = DetaRepository(
+          baseName: DetaBases.lostFound,
+          detaBaseUrl: _read(flavorConfigProvider)['detaBaseUrl'],
+        );
 
   Future addLostFound(LostFoundItem lostFoundItem) async {
     try {

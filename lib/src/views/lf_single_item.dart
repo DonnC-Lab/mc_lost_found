@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mc_core_constants/mc_core_constants.dart';
+import 'package:mini_campus_core/mini_campus_core.dart';
 
 import '../data/models/lost_found_item.dart';
 import 'item_image.dart';
@@ -34,7 +34,7 @@ class LostFoundSingleItem extends StatelessWidget {
               DateFormat.yMMMMd().format(lfi.date),
               style: Theme.of(context).textTheme.subtitle2?.copyWith(
                     fontSize: 11,
-                    color: greyTextShade,
+                    color: McAppColors.appGreyShadeColor,
                   ),
             ),
           ],

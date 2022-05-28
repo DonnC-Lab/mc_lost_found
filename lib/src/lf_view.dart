@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:mc_core_constants/mc_core_constants.dart';
 import 'package:mini_campus_core/mini_campus_core.dart';
 import 'package:relative_scale/relative_scale.dart';
 
@@ -48,7 +47,7 @@ class _LostFoundViewState extends ConsumerState<LostFoundView> {
   Widget build(BuildContext context) {
     final _style = Theme.of(context).textTheme.subtitle2?.copyWith(
           fontSize: 12,
-          color: greyTextShade,
+          color: McAppColors.appGreyShadeColor,
           fontWeight: FontWeight.w400,
           fontStyle: FontStyle.italic,
         );
@@ -57,7 +56,7 @@ class _LostFoundViewState extends ConsumerState<LostFoundView> {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        backgroundColor: bluishColor,
+        backgroundColor: McAppColors.appMainColor,
         tooltip: 'upload new L&F item',
         onPressed: () {
           routeTo(context, const AddLFItemView());
@@ -105,8 +104,9 @@ class _LostFoundViewState extends ConsumerState<LostFoundView> {
                                   .bodyText1
                                   ?.copyWith(
                                     fontWeight: FontWeight.bold,
-                                    color:
-                                        isLostItems ? mainWhite : greyTextShade,
+                                    color: isLostItems
+                                        ? McAppColors.appWhiteColor
+                                        : McAppColors.appGreyShadeColor,
                                   ),
                             ),
                           ),
@@ -139,8 +139,8 @@ class _LostFoundViewState extends ConsumerState<LostFoundView> {
                                   ?.copyWith(
                                     fontWeight: FontWeight.bold,
                                     color: !isLostItems
-                                        ? mainWhite
-                                        : greyTextShade,
+                                        ? McAppColors.appWhiteColor
+                                        : McAppColors.appGreyShadeColor,
                                   ),
                             ),
                           ),
@@ -223,7 +223,7 @@ class _LostFoundViewState extends ConsumerState<LostFoundView> {
           margin: const EdgeInsets.fromLTRB(16, 16, 0, 16),
           padding: const EdgeInsets.all(3),
           decoration: const BoxDecoration(
-            color: bluishColor,
+            color: McAppColors.appMainColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(25), bottomLeft: Radius.circular(25)),
           ),
@@ -231,7 +231,7 @@ class _LostFoundViewState extends ConsumerState<LostFoundView> {
             padding: const EdgeInsets.only(left: 10.0),
             child: DropdownButton<String?>(
               value: _selectedMonth,
-              iconEnabledColor: greyTextShade,
+              iconEnabledColor: McAppColors.appGreyShadeColor,
               underline: const SizedBox(),
               hint: Text('-month-',
                   style: Theme.of(context)
