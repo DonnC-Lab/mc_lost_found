@@ -60,7 +60,8 @@ class ItemImage extends ConsumerWidget {
                     fileSource: lostFoundPlaceholder,
                   );
                 } else {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(
+                      child: CircularProgressIndicator.adaptive());
                 }
               },
             ),

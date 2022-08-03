@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mini_campus_core/mini_campus_core.dart';
 
+import '../constants.dart';
+
 final lostFoundStorageProvider = Provider((_) => StorageService(_.read));
 
 class StorageService {
@@ -16,7 +18,8 @@ class StorageService {
     String? directory,
     String? filename,
   }) async {
-    final driveInstance = DetaDriveInit(drive: DetaDrives.lostFound);
+    final driveInstance =
+        DetaDriveInit(drive: LostFoundApiConstants.kDetaLostFoudDrive);
 
     final drive = _read(detaStorageProvider(driveInstance));
 
@@ -37,8 +40,8 @@ class StorageService {
   }
 
   Future<File?> downloadItemImageFuture(String filename) async {
-    final driveInstance =
-        DetaDriveInit(drive: DetaDrives.lostFound, filename: filename);
+    final driveInstance = DetaDriveInit(
+        drive: LostFoundApiConstants.kDetaLostFoudDrive, filename: filename);
 
     final res =
         await _read(detaStorageProvider(driveInstance)).download(filename);

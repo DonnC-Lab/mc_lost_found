@@ -197,8 +197,8 @@ class _LostFoundViewState extends ConsumerState<LostFoundView> {
                       '🙁 failed to fetch Lost & Found Items',
                       style: _style,
                     )),
-                    loading: () =>
-                        const Center(child: CircularProgressIndicator()),
+                    loading: () => const Center(
+                        child: CircularProgressIndicator.adaptive()),
                   ),
             ),
           ],

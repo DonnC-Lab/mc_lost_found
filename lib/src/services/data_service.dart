@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mini_campus_core/mini_campus_core.dart';
 
+import '../constants.dart';
 import '../data/models/lost_found_filter.dart';
 import '../data/models/lost_found_item.dart';
 
@@ -14,16 +15,14 @@ final lfFilterProvider =
   return api.getAllItemsByMonthType(filter);
 });
 
-/// deta base, lost-found repository
 class DataService {
   late final DetaRepository _detaRepository;
 
-  final Reader _read;
-
-  DataService(this._read)
+  DataService(Reader _read)
       : _detaRepository = DetaRepository(
-          baseName: DetaBases.lostFound,
-          detaBaseUrl: _read(flavorConfigProvider)['detaBaseUrl'],
+          baseName: LostFoundApiConstants.kLostFoundCollection,
+          detaBaseUrl: LostFoundApiConstants.kDetaLostFoundBaseUrl ??
+              _read(flavorConfigProvider)['detaBaseUrl'],
         );
 
   Future addLostFound(LostFoundItem lostFoundItem) async {

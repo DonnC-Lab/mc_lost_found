@@ -26,10 +26,10 @@ dependencies:
 
   # custom mc libs
   mini_campus_core:
-    # path: ../../mini_campus_core
-    git: 
-      url: https://github.com/DonnC-Lab/mini_campus_core.git
-      ref: main
+    path: ../../mini_campus_core
+    # git: 
+    #   url: https://github.com/DonnC-Lab/mini_campus_core.git
+    #   ref: main
 
 
 dev_dependencies:
